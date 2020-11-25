@@ -1,7 +1,7 @@
 import React from 'react';
 import apiService from '../../api-services/api-service';
 
-class DashboardPage extends React.Component {
+class DashboardPage extends React.Component {  
   state = {
     allSets: [],
     mostRecentTenSets: [],
@@ -16,6 +16,13 @@ class DashboardPage extends React.Component {
           mostRecentTenSets
         });
       });
+  }
+
+  handleSelectSet = (e) => {
+    e.preventDefault()
+    console.log(e.target['set-select'].value)
+    const selectedSet = this.state.mostRecentTenSets.find(set => set.set_name === e.target['set-select'].value)
+    this.props.handleSelectSet(selectedSet)
   }
 
   render() {
@@ -34,21 +41,21 @@ class DashboardPage extends React.Component {
       <div>Description of what app does: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, velit. Libero optio architecto cum et minima enim minus voluptates beatae atque non? Error minima modi vel maiores blanditiis perspiciatis deleniti.</div>
 
     Start a new set review or continue a set review:
-      <form>
+      <form onSubmit={(e) => this.handleSelectSet(e)}>
         <fieldset>
           <legend>Set Form</legend>
-          <label></label>
-          <select>
+          <label htmlFor="set-select"></label>
+          <select id="set-select" name="set-select">
             <option>--select a set--</option>
-            {this.state.mostRecentTenSets.map(set => {
+            {this.state.mostRecentTenSets.map((set,index) => {
               return (
-                <option value={set.id}>{set.set_name}</option>
+                <option key = {index}>{set.set_name}</option>
               );
             })}
             {/* Need to implement this */}
             <option>--choose set by set code--</option>
           </select>
-          <button>Start</button>
+          <button type='submit'>Start</button>
         </fieldset>
       </form>
     </>;
