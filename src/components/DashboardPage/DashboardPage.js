@@ -4,16 +4,41 @@ import apiService from '../../api-services/api-service';
 class DashboardPage extends React.Component {  
   state = {
     allSets: [],
+    allReviewableSets: [],
     mostRecentTenSets: [],
   };
 
   componentDidMount() {
+    let validSets = [
+      'core',
+      'expansion',
+      'masters',
+      'masterpiece',
+      //' from_the_vault',
+      //' spellbook',
+      'premium_deck',
+      //' duel_deck',
+      'draft_innovation',
+      //' treasure_chest',
+      //' commander',
+      'planechase',
+      'archenemy',
+      'vanguard',
+      'funny',
+      'starter',
+      //' box',
+      //' promo',
+      //' token',
+      //' memoribilia',
+    ]
     apiService.getAllSets()
       .then(allSets => {
-        let mostRecentTenSets = allSets.splice(allSets.length - 11, allSets.length - 1);
+        let allReviewableSets = allSets.filter(set => validSets.includes(set.set_type))
+        let mostRecentTenSets = allReviewableSets.splice(allReviewableSets.length - 11, allReviewableSets.length - 1);
         this.setState({
           allSets,
-          mostRecentTenSets
+          allReviewableSets,
+          mostRecentTenSets,
         });
       });
   }
