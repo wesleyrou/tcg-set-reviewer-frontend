@@ -1,7 +1,7 @@
 import React from 'react';
 import apiService from '../../api-services/api-service';
 
-class DashboardPage extends React.Component {  
+class DashboardPage extends React.Component {
   state = {
     allSets: [],
     allReviewableSets: [],
@@ -30,10 +30,10 @@ class DashboardPage extends React.Component {
       //' promo',
       //' token',
       //' memoribilia',
-    ]
+    ];
     apiService.getAllSets()
       .then(allSets => {
-        let allReviewableSets = allSets.filter(set => validSets.includes(set.set_type))
+        let allReviewableSets = allSets.filter(set => validSets.includes(set.set_type));
         let mostRecentTenSets = allReviewableSets.splice(allReviewableSets.length - 11, allReviewableSets.length - 1);
         this.setState({
           allSets,
@@ -44,11 +44,12 @@ class DashboardPage extends React.Component {
   }
 
   handleSelectSet = (e) => {
-    e.preventDefault()
-    console.log(e.target['set-select'].value)
-    const selectedSet = this.state.mostRecentTenSets.find(set => set.set_name === e.target['set-select'].value)
-    this.props.handleSelectSet(selectedSet)
-  }
+    e.preventDefault();
+    console.log(e.target['set-select'].value);
+    const selectedSet = this.state.mostRecentTenSets.find(set => set.set_name === e.target['set-select'].value);
+    this.props.handleSelectSet(selectedSet);
+    console.log(this.props.history);
+  };
 
   render() {
     return <>
@@ -72,9 +73,9 @@ class DashboardPage extends React.Component {
           <label htmlFor="set-select"></label>
           <select id="set-select" name="set-select">
             <option>--select a set--</option>
-            {this.state.mostRecentTenSets.map((set,index) => {
+            {this.state.mostRecentTenSets.map((set, index) => {
               return (
-                <option key = {index}>{set.set_name}</option>
+                <option key={index}>{set.set_name}</option>
               );
             })}
             {/* Need to implement this */}
