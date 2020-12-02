@@ -6,8 +6,18 @@ class ReviewPage extends React.Component {
     const { currentSet, currentCards } = this.props;
     console.log(currentSet, currentCards);
 
+    const cards = currentCards.map(card =>
+      <>
+        <img src={card.image_url} alt={card.card_name} />
+        <p>1/5</p>
+      </>
+    );
+
     return (
-      <h1>Set name</h1>
+      <>
+        <h2>{currentSet.set_name}</h2>
+        {cards[0]}
+      </>
     );
   }
 }

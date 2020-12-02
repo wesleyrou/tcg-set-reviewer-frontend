@@ -6,9 +6,12 @@ class DashboardPage extends React.Component {
     allSets: [],
     allReviewableSets: [],
     mostRecentTenSets: [],
+    loading: false
   };
 
   componentDidMount() {
+    console.log("MOUNTINGGGGGGG!!!!!");
+    this.setState({ loading: true });
     let validSets = [
       'core',
       'expansion',
@@ -39,7 +42,11 @@ class DashboardPage extends React.Component {
           allSets,
           allReviewableSets,
           mostRecentTenSets,
+          loading: false
         });
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
 
@@ -47,8 +54,8 @@ class DashboardPage extends React.Component {
     e.preventDefault();
     console.log(e.target['set-select'].value);
     const selectedSet = this.state.mostRecentTenSets.find(set => set.set_name === e.target['set-select'].value);
-    this.props.handleSelectSet(selectedSet);
-    console.log(this.props.history);
+    this.props.handleSelectSet(selectedSet, this.props.history);
+    this.props.history.push('/review');
   };
 
   render() {
@@ -81,7 +88,7 @@ class DashboardPage extends React.Component {
             {/* Need to implement this */}
             <option>--choose set by set code--</option>
           </select>
-          <button type='submit'>Start</button>
+          <button type='submit' disabled={this.state.loading}>Start</button>
         </fieldset>
       </form>
     </>;

@@ -14,7 +14,7 @@ class App extends React.Component {
     currentSet: {},
   };
 
-  handleSelectSet = (set) => {
+  handleSelectSet = (set, history) => {
     // console.log(set);
     apiService.getCardsOfSet(set.id)
       .then(cardsOfSet => {
@@ -25,25 +25,19 @@ class App extends React.Component {
       })
       .then(() => {
         // console.log(this.state.currentCards);
-        //this.handleReviewStart();
+        // history.push('/review');
       })
       .catch(err => console.log(err));
-  };
-
-  handleReviewStart = () => {
-    this.props.history.push('/review');
   };
 
   render() {
     return <>
       <Header />
       <main>
-        <Switch>
-          <Route exact path='/' component={LandingPage} />
-          <Route path='/register' component={RegistrationPage} />
-          <Route path='/dashboard' component={(props) => <DashboardPage props={props} handleSelectSet={this.handleSelectSet} />} />
-          <Route path='/review' component={(props) => <ReviewPage props={props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
-        </Switch>
+        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/register' component={RegistrationPage} />
+        <Route exact path='/dashboard' component={(props) => <DashboardPage {...props} handleSelectSet={this.handleSelectSet} />} />
+        <Route exact path='/review' component={(props) => <ReviewPage {...props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
       </main>
     </>;
   }
