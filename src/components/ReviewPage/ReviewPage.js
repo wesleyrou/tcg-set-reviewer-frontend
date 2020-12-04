@@ -1,4 +1,5 @@
 import React from 'react';
+import apiService from '../../api-services/api-service';
 import Card from '../Card/Card';
 import './ReviewPage.css';
 
@@ -6,6 +7,14 @@ class ReviewPage extends React.Component {
 
   componentDidMount() {
     // check if player has reviewed set before
+    if (this.props.currentSet.id)
+      apiService.postReview(this.props.currentSet.id, 1)
+        .then(cardReviews => {
+          console.log(cardReviews);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     // false = save new review to db
     // true = this is an old review
     //    pull ratings
@@ -18,8 +27,8 @@ class ReviewPage extends React.Component {
   render() {
     const { currentSet, currentCards } = this.props;
     console.log(currentSet, currentCards);
-    const cards = currentCards.map(card =>
-      <Card key={card.card_name} url={card.image_url} name={card.card_name} />
+    const cards = currentCards.map((card, index) =>
+      <Card key={index} url={card.image_url} name={card.card_name} />
     );
 
     return (
