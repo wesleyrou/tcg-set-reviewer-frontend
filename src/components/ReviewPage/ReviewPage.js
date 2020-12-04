@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from '../Card/Card';
+import './ReviewPage.css';
 
 class ReviewPage extends React.Component {
 
@@ -17,21 +19,19 @@ class ReviewPage extends React.Component {
     const { currentSet, currentCards } = this.props;
     console.log(currentSet, currentCards);
     const cards = currentCards.map(card =>
-      <div>
-        <img src={card.image_url} alt={card.card_name} />
-        <input type="text" />
-      </div>
+      <Card key={card.card_name} url={card.image_url} name={card.card_name} />
     );
 
     return (
-      <>
+      <div className="Review">
         <h2>{currentSet.set_name}</h2>
         <form>
           <button type="submit">Save</button>
-          {cards}
+          <div className="card-container">
+            {cards}
+          </div>
         </form>
-
-      </>
+      </div>
     );
   }
 }

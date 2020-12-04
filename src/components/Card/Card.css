@@ -1,0 +1,10 @@
+
+.Card {
+  max-width: 15rem;
+  border: 1px solid;
+  margin: 0.2rem;
+}
+
+.Card img {
+  max-width: 15rem;
+}
