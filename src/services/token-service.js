@@ -13,10 +13,6 @@ const TokenService = {
     window.localStorage.setItem(config.USERNAME_KEY, username);
   },
 
-  saveEmail(email) {
-    window.localStorage.setItem(config.EMAIL_KEY, email);
-  },
-
   getAuthToken() {
     return window.localStorage.getItem(config.TOKEN_KEY);
   },
@@ -27,10 +23,6 @@ const TokenService = {
 
   getUsername() {
     return window.localStorage.getItem(config.USERNAME_KEY);
-  },
-
-  getEmail() {
-    return window.localStorage.getItem(config.EMAIL_KEY);
   },
 
   clearAuthToken() {
