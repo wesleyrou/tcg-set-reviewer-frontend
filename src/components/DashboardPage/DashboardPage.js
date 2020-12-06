@@ -1,5 +1,5 @@
 import React from 'react';
-import apiService from '../../api-services/api-service';
+import apiService from '../../services/api-service';
 
 class DashboardPage extends React.Component {
   state = {
@@ -10,7 +10,6 @@ class DashboardPage extends React.Component {
   };
 
   componentDidMount() {
-    console.log("MOUNTINGGGGGGG!!!!!");
     this.setState({ loading: true });
     let validSets = [
       'core',
@@ -54,7 +53,8 @@ class DashboardPage extends React.Component {
     e.preventDefault();
     console.log(e.target['set-select'].value);
     const selectedSet = this.state.mostRecentTenSets.find(set => set.set_name === e.target['set-select'].value);
-    this.props.handleSelectSet(selectedSet, this.props.history);
+    this.props.handleSelectSet(selectedSet);
+    // console.log('props: ', this.props);
     this.props.history.push('/review');
   };
 

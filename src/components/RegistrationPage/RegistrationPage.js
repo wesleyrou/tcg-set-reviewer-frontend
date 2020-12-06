@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthApiService from '../../services/auth-api-service';
-import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/api-service';
+// import TokenService from '../../services/token-service';
 
 
 class RegistrationPage extends React.Component {
@@ -23,7 +23,7 @@ class RegistrationPage extends React.Component {
   };
 
   handleLoginAfterRegister = (username, password) => {
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
 
   render() {

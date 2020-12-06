@@ -17,7 +17,7 @@ class LandingPage extends React.Component {
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
         TokenService.saveUserId(res.user_id);
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
       })
       .catch((err) => {
         console.error(err.error);

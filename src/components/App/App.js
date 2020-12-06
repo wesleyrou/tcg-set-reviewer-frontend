@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import './App.css';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import LandingPage from '../LandingPage/LandingPage';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
-import apiService from '../../api-services/api-service';
+import apiService from '../../services/api-service';
 import ReviewPage from '../ReviewPage/ReviewPage';
 
 class App extends React.Component {
