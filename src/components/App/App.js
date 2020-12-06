@@ -1,6 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
+import PrivateRoute from '../../Utils/PrivateRoute';
+import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
 import Header from '../Header/Header';
 import LandingPage from '../LandingPage/LandingPage';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
@@ -33,10 +35,10 @@ class App extends React.Component {
     return <>
       <Header />
       <main>
-        <Route exact path='/' component={(props) => <LandingPage {...props} />} />
-        <Route exact path='/register' component={(props) => <RegistrationPage {...props} />} />
-        <Route exact path='/dashboard' component={(props) => <DashboardPage {...props} handleSelectSet={this.handleSelectSet} />} />
-        <Route exact path='/review' component={(props) => <ReviewPage {...props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
+        <PublicOnlyRoute exact path='/' component={(props) => <LandingPage {...props} />} />
+        <PublicOnlyRoute exact path='/register' component={(props) => <RegistrationPage {...props} />} />
+        <PrivateRoute exact path='/dashboard' component={(props) => <DashboardPage {...props} handleSelectSet={this.handleSelectSet} />} />
+        <PrivateRoute exact path='/review' component={(props) => <ReviewPage {...props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
       </main>
     </>;
   }
