@@ -5,6 +5,7 @@ import AuthApiService from '../../services/api-service';
 
 class LandingPage extends React.Component {
 
+
   handleSubmitJwtAuth(event) {
     event.preventDefault();
 
@@ -20,7 +21,7 @@ class LandingPage extends React.Component {
         this.props.history.push('/dashboard');
       })
       .catch((err) => {
-        console.error(err.error);
+        console.log(err);
       });
   }
 
@@ -37,7 +38,7 @@ class LandingPage extends React.Component {
       <div>Spoilers Available: XX/125</div>
       <div>Description of what app does: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, velit. Libero optio architecto cum et minima enim minus voluptates beatae atque non? Error minima modi vel maiores blanditiis perspiciatis deleniti.</div>
 
-      <form onSubmit={this.handleSubmitJwtAuth}>
+      <form onSubmit={(e) => this.handleSubmitJwtAuth(e)}>
         <fieldset>
           <legend>Login Form</legend>
           <div>
