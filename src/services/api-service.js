@@ -1,21 +1,22 @@
-const baseURL = 'http://localhost:8000/api';
+import config from '../config';
+import TokenService from '../services/token-service';
 
 const apiService = {
   // GET all sets
   getAllSets: () => {
-    return fetch(`${baseURL}/sets`)
+    return fetch(`${config.API_ENDPOINT}/sets`)
       .then(res => res.json())
       .then(allSets => allSets);
   },
 
   getCardsOfSet: (set_ID) => {
-    return fetch(`${baseURL}/cards/${set_ID}`)
+    return fetch(`${config.API_ENDPOINT}/cards/${set_ID}`)
       .then(res => res.json())
       .then(cardsOfSet => cardsOfSet);
   },
 
   postReview: (set_ID, user_ID) => {
-    return fetch(`${baseURL}/reviews/${set_ID}`, {
+    return fetch(`${config.API_ENDPOINT}/reviews/${set_ID}`, {
       method: 'POST',
       headers: {
         "content-type": "application/json",

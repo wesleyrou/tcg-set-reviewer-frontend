@@ -1,5 +1,5 @@
 import React from 'react';
-import apiService from '../../api-services/api-service';
+import apiService from '../../services/api-service';
 import Card from '../Card/Card';
 import './ReviewPage.css';
 
