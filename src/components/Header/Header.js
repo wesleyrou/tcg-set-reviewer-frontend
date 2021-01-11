@@ -1,13 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import './Header.css'
-
-class Header extends React.Component {
-  render() {
-    return <header className='header-main'>
-      MTG Set Reviewer
-    </header>
-=======
 import './Header.css';
 
 class Header extends React.Component {
@@ -21,7 +12,6 @@ class Header extends React.Component {
         <a href="#about">About</a>
       </nav>
     </header>;
->>>>>>> a025e1bdcb89e73472138eea136d4ff60a97b269
   }
 
 }

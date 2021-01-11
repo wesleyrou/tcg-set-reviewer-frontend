@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .rating-container {
     display: flex;
     flex-direction: column;
@@ -8,15 +7,4 @@
 .rating-container .card-container img {
     width: 300px;
     object-fit: scale-down;
-=======
-
-.Card {
-  max-width: 15rem;
-  border: 1px solid;
-  margin: 0.2rem;
-}
-
-.Card img {
-  max-width: 15rem;
->>>>>>> a025e1bdcb89e73472138eea136d4ff60a97b269
 }
