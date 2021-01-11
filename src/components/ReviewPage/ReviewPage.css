@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .cards-container {
     display: flex;
     flex-direction: row;
@@ -26,4 +27,11 @@
 .review-header button{
     margin-left: 10px;
     height: 30px;
+=======
+.card-container{
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 0 auto;
+>>>>>>> a025e1bdcb89e73472138eea136d4ff60a97b269
 }
