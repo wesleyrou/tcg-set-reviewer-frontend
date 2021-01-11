@@ -16,7 +16,7 @@ class App extends React.Component {
 
   handleSelectSet = (set, history) => {
     // console.log(set);
-    apiService.getCardsOfSet(set.id)
+    apiService.getCardsOfSet(set.code)
       .then(cardsOfSet => {
         this.setState({
           currentCards: cardsOfSet,
@@ -36,7 +36,7 @@ class App extends React.Component {
       <main>
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/register' component={RegistrationPage} />
-        <Route exact path='/dashboard' component={(props) => <DashboardPage {...props} handleSelectSet={this.handleSelectSet} />} />
+        <Route exact path='/dashboard' component={(props) => <DashboardPage {...props} handleChangeSet = {this.handleChangeSet} handleSelectSet={this.handleSelectSet} />} />
         <Route exact path='/review' component={(props) => <ReviewPage {...props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
       </main>
     </>;

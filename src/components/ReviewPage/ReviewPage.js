@@ -1,8 +1,18 @@
 import React from 'react';
+import apiService from '../../api-services/api-service';
+import Card from '../Card/Card';
+import './ReviewPage.css'
 
 class ReviewPage extends React.Component {
+  state = {
+    ratings:{}
+  }
 
   componentDidMount() {
+    apiService.getCardReviews(this.props.currentSet.id)
+    .then(res => {
+      console.log(res)
+    })
     // check if player has reviewed set before
     // false = save new review to db
     // true = this is an old review
@@ -13,22 +23,37 @@ class ReviewPage extends React.Component {
   // - create form submit function
   // - check db if player has reviewed set before
 
+  handleRatingChange = (e, card) => {
+    e.preventDefault();
+    console.log(e.target.value, card)
+    let updatedRatings = this.state.ratings
+    updatedRatings[card.id] = e.target.value    
+    this.setState({ratings: updatedRatings}, console.log(this.state.ratings))
+  }
+
+  handleSaveRatings = (e) => {
+    e.preventDefault();
+
+    console.log('SAVEEEEEEE RATINGSSSSSSS')
+  }
+
   render() {
     const { currentSet, currentCards } = this.props;
-    console.log(currentSet, currentCards);
-    const cards = currentCards.map(card =>
-      <div>
-        <img src={card.image_url} alt={card.card_name} />
-        <input type="text" />
-      </div>
+    // console.log(currentSet, currentCards);
+    const cards = currentCards.map((card, key) =>
+      <Card key = {key} card = {card} handleRatingChange = {this.handleRatingChange}/>
     );
 
     return (
-      <>
-        <h2>{currentSet.set_name}</h2>
-        <form>
-          <button type="submit">Save</button>
-          {cards}
+      <>        
+        <form onSubmit = {(e) => {this.handleSaveRatings(e)}}>
+          <header className='review-header'>
+            <h2>{currentSet.set_name}</h2>
+            <button type="submit">Save</button>
+          </header>          
+          <div className = 'cards-container'>
+            {cards}
+          </div>
         </form>
 
       </>

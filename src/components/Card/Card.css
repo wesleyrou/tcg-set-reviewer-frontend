@@ -1,0 +1,10 @@
+.rating-container {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;    
+}
+
+.rating-container .card-container img {
+    width: 300px;
+    object-fit: scale-down;
+}
