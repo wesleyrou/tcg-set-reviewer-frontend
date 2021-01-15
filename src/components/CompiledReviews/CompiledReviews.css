@@ -1,0 +1,14 @@
+.table-row-container {
+    display:flex;
+    flex-direction: row;    
+}
+
+.table-card-names{
+    width: 200px;
+    border: solid black 1px;
+}
+
+.table-row{
+    width: 100px;
+    border: solid black 1px;
+}

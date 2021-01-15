@@ -15,26 +15,34 @@ const apiService = {
   },
 
   // GET card reviews
-  getCardReviews: (setId) => {
+  getCardReviews: (setId, user_id) => {
     return fetch(`${baseURL}/reviews/${setId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({user_id: 1})
+      body: JSON.stringify({user_id: user_id})
     })
       .then(res => res.json())
       .then(response => response);
   },
 
+  // GET All card reviews
+  getAllCardReviews: (setCode) => {
+    return fetch(`${baseURL}/compiledReviews/${setCode}`)
+      .then(res => res.json())
+      .then(response => response);
+  },
+
   // PATCH review
-  patchCardReviews : (cardReviews) => {
-    return fetch(`${baseURL}/reviews`, {
+  patchCardReviews : (cardReviews, currentReview) => {
+    console.log(cardReviews)
+    return fetch(`${baseURL}/cardReviews`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(cardReviews)
+      body: JSON.stringify({cardReviews: cardReviews, currentReview: currentReview})
     })
       .then(res => res.json())
       .then(response => response);

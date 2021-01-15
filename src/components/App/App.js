@@ -7,6 +7,7 @@ import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import apiService from '../../api-services/api-service';
 import ReviewPage from '../ReviewPage/ReviewPage';
+import CompiledReviews from '../CompiledReviews/CompiledReviews';
 
 class App extends React.Component {
   state = {
@@ -34,10 +35,11 @@ class App extends React.Component {
     return <>
       <Header />
       <main>
-        <Route exact path='/' component={LandingPage} />
+        {/* <Route exact path='/' component={LandingPage} /> */}
         <Route exact path='/register' component={RegistrationPage} />
-        <Route exact path='/dashboard' component={(props) => <DashboardPage {...props} handleChangeSet = {this.handleChangeSet} handleSelectSet={this.handleSelectSet} />} />
+        <Route exact path='/' component={(props) => <DashboardPage {...props} handleChangeSet = {this.handleChangeSet} handleSelectSet={this.handleSelectSet} />} />
         <Route exact path='/review' component={(props) => <ReviewPage {...props} currentSet={this.state.currentSet} currentCards={this.state.currentCards} />} />
+        <Route exact path='/compiled-reviews' component={CompiledReviews} />
       </main>
     </>;
   }
