@@ -12,6 +12,8 @@ Enter your User ID and click Get Review. Wait a few seconds then click it again.
 
 You can hopefully start adding ratings for the cards. Try changing the rating for a few cards, saving, refreshing the start page and getting your review to see if it saved.
 
+## Blahhh
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
