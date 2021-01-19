@@ -2,6 +2,8 @@
 
 This app is not finished and is very buggy.
 
+Live App: https://mtg-set-reviewer.vercel.app/
+
 ## Landing Page
 
 ![Landing Page](./public/static/img/landing-page.png "Landing Page")
