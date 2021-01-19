@@ -6,7 +6,7 @@ This app is not finished and is very buggy.
 
 ![Landing Page](./public/static/img/landing-page.png "Landing Page")
 
-Select set and click start.
+Select set (currently only Kaldheim is available) and click start.
 
 ## Review Page
 
