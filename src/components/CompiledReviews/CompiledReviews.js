@@ -15,7 +15,7 @@ class CompiledReviews extends React.Component {
         e.preventDefault()     
         let setCode = e.target['set-code'].value
         apiService.getAllCardReviews(setCode)
-        .then(reviews => {
+        .then(reviews => {            
             let users = []
             let hash = {};            
             for(let i = 0; i < reviews.length; i++) {

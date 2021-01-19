@@ -22,12 +22,7 @@ class Card extends React.Component {
         console.log(currentCard)
 
         let ratingDisplay;
-
-        if(this.state.edit === true || !currentCard){
-            ratingDisplay = <input onChange = {(e) => this.props.handleRatingChange(e, card) } type="text" />
-        } else {
-            ratingDisplay = <div onClick = {(e) => this.handleEditRating(e)}>{currentCard.rating}</div>
-        }
+        ratingDisplay = <input value={(currentCard)?currentCard.rating:'0'} onChange = {(e) => this.props.handleRatingChange(e, card) } type="text" />
 
         if(card.card_name.includes('//')){            
 
