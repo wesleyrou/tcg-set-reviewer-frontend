@@ -7,7 +7,6 @@ class ReviewPage extends React.Component {
   state = {
     ratings:[],
     currentReview:{},
-    error:null
 
   }
 
@@ -31,34 +30,30 @@ class ReviewPage extends React.Component {
     apiService.getCardReviews(this.props.currentSet.id, user_id)
     .then(res => {
       console.log(res)
-      this.setState({currentReview:res.review, ratings: res.cardReviews, error:nul},console.log(this.state.currentReview, this.state.ratings))
+      this.setState({currentReview:res.review, ratings: res.cardReviews})
     })
   }
 
   handleRatingChange = (e, card) => {
     e.preventDefault();
-    if(this.state.currentReview === {}){
-      this.setState({error:'click get review again'})
-    } else {
-      console.log(card, this.state.currentReview.id)
-      console.log(e.target.value, card)
-      let updatedRatings = this.state.ratings
-      const targetCardIndex = updatedRatings.findIndex(savedCard => savedCard.card_id === card.id)
-      targetCardIndex === -1
-      ?updatedRatings.push({review_id: this.state.currentReview.id, card_id: card.id, rating: e.target.value})
-      :updatedRatings[targetCardIndex] = {review_id: this.state.currentReview.id, card_id: card.id, rating: e.target.value}
-      this.setState({ratings: updatedRatings}, console.log(this.state.ratings))
-    }
+    
+    console.log(card, this.state.currentReview.id)
+    console.log(e.target.value, card)
+    let updatedRatings = this.state.ratings
+    const targetCardIndex = updatedRatings.findIndex(savedCard => savedCard.card_id === card.id)
+    targetCardIndex === -1
+    ?updatedRatings.push({review_id: this.state.currentReview.id, card_id: card.id, rating: e.target.value})
+    :updatedRatings[targetCardIndex] = {review_id: this.state.currentReview.id, card_id: card.id, rating: e.target.value}
+    this.setState({ratings: updatedRatings}, console.log(this.state.ratings))
+    
   }
 
   handleSaveRatings = (e) => {    
     e.preventDefault();
     apiService.patchCardReviews(this.state.ratings,this.state.currentReview)
     .then(() => {
-      console.log('reviews saved')
     })
-
-    console.log('SAVEEEEEEE RATINGSSSSSSS',this.state.ratings)
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -71,7 +66,6 @@ class ReviewPage extends React.Component {
     return (
       <>
         <h2>{currentSet.set_name}</h2>
-        <div hidden={this.state.error?false:true}>{this.state.error}</div>
         <form onSubmit = {(e) => this.handleGetReview(e)}>
           <label htmlFor='user-id'>User ID</label>
           <input type='text' id='user-id' name='user-id'></input>
