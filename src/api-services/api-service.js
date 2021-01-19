@@ -1,4 +1,9 @@
-const baseURL = 'http://localhost:8000/api';
+//prod env
+const baseURL = 'https://fast-inlet-75028.herokuapp.com/api';
+
+//test env
+// const baseURL = 'http://localhost:8000/api';
+
 
 const apiService = {
   // GET all sets

@@ -30,7 +30,7 @@ class ReviewPage extends React.Component {
     apiService.getCardReviews(this.props.currentSet.id, user_id)
     .then(res => {
       console.log(res)
-      this.setState({currentReview:res.review, ratings: res.cardReviews})
+      this.setState({currentReview:res.review, ratings: res.cardReviews},console.log(this.state.currentReview, this.state.ratings))
     })
   }
 
