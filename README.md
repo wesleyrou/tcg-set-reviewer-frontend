@@ -1,3 +1,7 @@
+## Preface
+
+This app is not finished and is very buggy.
+
 ## Landing Page
 
 ![Landing Page](./public/static/img/landing-page.png "Landing Page")
