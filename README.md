@@ -8,9 +8,9 @@ Select set and click start.
 
 ![Review Page](./public/static/img/review-page.png "Review Page")
 
-Enter your User ID and click Get Review. Wait a few seconds then click it again.
+Enter your User ID and click Get Review. Wait a little bit before beginning to review cards.
 
-You can hopefully start adding ratings for the cards. Try changing the rating for a few cards, saving, refreshing the start page and getting your review to see if it saved.
+When you want to stop or are finished, click the Save button.
 
 ## Blahhh
 
