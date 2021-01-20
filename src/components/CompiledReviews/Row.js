@@ -19,10 +19,10 @@ class Row extends React.Component {
 
         console.log(max, min, 'max -min')
         
-        const usersColumnRatings = users.map((user,key) => <div className='table-row' key={key}>{(rowReview[user])?rowReview[user].rating :'no rating'}</div>)
+        const usersColumnRatings = users.map((user,key) => <td className='table-row' key={key}>{(rowReview[user])?rowReview[user].rating :'no rating'}</td>)
 
         return <div className={(max-min > 1)?'table-row-container differentRatings':'table-row-container'}>
-            <div className='table-card-names'>{rowReview[users[0]].card_name}</div>
+            <td className='table-card-names'>{(max-min > 1)?`${rowReview[users[0]].card_name} (difference)`:rowReview[users[0]].card_name}</td>
             {usersColumnRatings}
         </div>
     }

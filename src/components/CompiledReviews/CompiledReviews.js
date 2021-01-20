@@ -46,11 +46,11 @@ class CompiledReviews extends React.Component {
 
     render() {
         console.log(this.state.reviews,this.state.firstCardId)
-        const usersColumnLabels = this.state.users.map((user,key) => <div className='table-row' key={key}>{user}</div>)
+        const usersColumnLabels = this.state.users.map((user,key) => <td className='table-row' key={key}>{user}</td>)
         let rows        
         if (this.state.lastCardId-this.state.firstCardId) {
             let array = Array(this.state.lastCardId-this.state.firstCardId).fill(0)
-            rows = array.map((row,key) => <div key={key} id={key + this.state.firstCardId}><Row users={this.state.users} rowReview={this.state.reviews[key + this.state.firstCardId]}/></div>)
+            rows = array.map((row,key) => <tr key={key} id={key + this.state.firstCardId}><Row users={this.state.users} rowReview={this.state.reviews[key + this.state.firstCardId]}/></tr>)
         }
 
         return <>
@@ -62,13 +62,15 @@ class CompiledReviews extends React.Component {
                     <button type='click'>Compile Reviews</button>
                 </fieldset>
             </form>
-            <div className='table-row-container'>
-                {/* left corner table indent */}
-                <div className='table-card-names'></div>
-                
-                {usersColumnLabels}
-            </div>            
-            {rows}
+            <table>
+                <tr className='table-row-container'>
+                    {/* left corner table indent */}
+                    <td className='table-card-names'></td>
+                    
+                    {usersColumnLabels}
+                </tr>            
+                {rows}
+            </table>
         </>
     }
 }

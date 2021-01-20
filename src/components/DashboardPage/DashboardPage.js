@@ -1,5 +1,6 @@
 import React from 'react';
 import apiService from '../../api-services/api-service';
+import ratingsScaleImage from '../../img/ratings-scale.png';
 
 class DashboardPage extends React.Component {
   state = {
@@ -60,18 +61,20 @@ class DashboardPage extends React.Component {
 
   render() {
     return <>
-      <nav>
+      {/* <nav>
         <ul>
           <li>My Reviews</li>
           <li>Compiled Reviews</li>
         </ul>
-      </nav>
+      </nav> */}
 
-
-      <div>Next Set: XYZ</div>
+      {/* description commented out for kaldheim prototype */}
+      {/* <div>Next Set: XYZ</div>
       <div>Countdown/Release Date</div>
       <div>Spoilers Available: XX/125</div>
-      <div>Description of what app does: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, velit. Libero optio architecto cum et minima enim minus voluptates beatae atque non? Error minima modi vel maiores blanditiis perspiciatis deleniti.</div>
+      <div>Description of what app does: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, velit. Libero optio architecto cum et minima enim minus voluptates beatae atque non? Error minima modi vel maiores blanditiis perspiciatis deleniti.</div> */}
+
+      <img src={ratingsScaleImage} alt='rating scale image'/>
 
     Start a new set review or continue a set review:
       <form onSubmit={(e) => this.handleSelectSet(e)}>
