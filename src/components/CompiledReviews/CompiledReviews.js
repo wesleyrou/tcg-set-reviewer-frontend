@@ -50,7 +50,7 @@ class CompiledReviews extends React.Component {
         let rows        
         if (this.state.lastCardId-this.state.firstCardId) {
             let array = Array(this.state.lastCardId-this.state.firstCardId).fill(0)
-            rows = array.map((row,key) => <tr key={key} id={key + this.state.firstCardId}><Row users={this.state.users} rowReview={this.state.reviews[key + this.state.firstCardId]}/></tr>)
+            rows = array.map((row,key) => (this.state.reviews[key + this.state.firstCardId])?<Row key={key} id={key + this.state.firstCardId} users={this.state.users} rowReview={this.state.reviews[key + this.state.firstCardId]}/>:<tr key={key} hidden={true}></tr>)
         }
 
         return <>
@@ -63,6 +63,7 @@ class CompiledReviews extends React.Component {
                 </fieldset>
             </form>
             <table>
+                <tbody>
                 <tr className='table-row-container'>
                     {/* left corner table indent */}
                     <td className='table-card-names'></td>
@@ -70,6 +71,7 @@ class CompiledReviews extends React.Component {
                     {usersColumnLabels}
                 </tr>            
                 {rows}
+                </tbody>
             </table>
         </>
     }
