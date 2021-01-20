@@ -14,12 +14,7 @@ class Row extends React.Component {
                 firstValidUser = user
             }
             console.log(rowReview[user])
-            if(rowReview[user].rating === '.5'){
-                ratingsArray.push(0.5)
-            }
-            else{
-                ratingsArray.push(parseInt(rowReview[user].rating))
-            }
+            ratingsArray.push(parseFloat(rowReview[user].rating))
         }
         
         let min = Math.min(...ratingsArray)
