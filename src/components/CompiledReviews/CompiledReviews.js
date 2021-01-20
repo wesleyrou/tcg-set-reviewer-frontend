@@ -9,13 +9,15 @@ class CompiledReviews extends React.Component {
         users: [],
         firstCardId: null,
         lastCardId: null,
+        originalReviews: [],
     }
     
     handleCompileClick = (e) => {   
         e.preventDefault()     
         let setCode = e.target['set-code'].value
         apiService.getAllCardReviews(setCode)
-        .then(reviews => {            
+        .then(reviews => {  
+                     
             let users = []
             let hash = {};            
             for(let i = 0; i < reviews.length; i++) {
@@ -36,7 +38,7 @@ class CompiledReviews extends React.Component {
                 }
             }
 
-            this.setState({reviews: hash, users: users, firstCardId: reviews[0].card_id, lastCardId: reviews[reviews.length-1].card_id})
+            this.setState({reviews: hash, originalReviews: reviews, users: users, firstCardId: reviews[0].card_id, lastCardId: reviews[reviews.length-1].card_id})
 
             console.log(hash)
         })
