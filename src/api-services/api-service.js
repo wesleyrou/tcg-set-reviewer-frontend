@@ -1,5 +1,5 @@
 //prod env
-const baseURL = 'https://fast-inlet-75028.herokuapp.com/api';
+const baseURL = 'https://dry-tundra-64401.herokuapp.com/api';
 
 //test env
 // const baseURL = 'http://localhost:8000/api';
